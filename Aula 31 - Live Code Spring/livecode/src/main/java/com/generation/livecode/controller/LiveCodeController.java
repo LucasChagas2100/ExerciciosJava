@@ -59,12 +59,12 @@ public class LiveCodeController {
 	
 	@PostMapping
 	public ResponseEntity<LiveCode> postLive(@RequestBody LiveCode live){
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(live));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(live));
 	}
 	
 	@PutMapping
 	public ResponseEntity<LiveCode> putLive(@RequestBody LiveCode live){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(live));
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(live));
 	}
 	@DeleteMapping("/{id}")
 	public void deleteLive(@PathVariable long id) {
