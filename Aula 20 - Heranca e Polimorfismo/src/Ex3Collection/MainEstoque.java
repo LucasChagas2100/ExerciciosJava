@@ -36,7 +36,6 @@ public class MainEstoque {
 		System.out.println("Kibe não é muito vendido, iremos retirá-lo do catálogo");
 		conjunto1.remove(kibe);//Kibe é ruim, portanto vamos retira-lo.
 		System.out.println(conjunto1);
-		
 		//Início das vendas
 		while (opcao!=4) {
 			System.out.println("\n\n\n**** Vendas de produtos ****");

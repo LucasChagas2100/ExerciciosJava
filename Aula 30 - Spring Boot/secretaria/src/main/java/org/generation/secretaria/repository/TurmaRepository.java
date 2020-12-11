@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TurmaRepository extends JpaRepository<Turma, Long>{
-	public List<Turma> findAllByTurmaContainingIgnoreCase(String turma);
+	public List<Turma> findAllByTurmaContainingIgnoreCase(String turma); //turma é o nome da turma
 }

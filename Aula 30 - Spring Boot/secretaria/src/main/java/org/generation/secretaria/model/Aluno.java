@@ -1,43 +1,42 @@
 package org.generation.secretaria.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name= "tb_turma") //criar uma tabela dentro do banco de dados, chamada de turma
-public class Turma {
+@Table(name = "tb_aluno")
+public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
-	@Size(min = 2, max = 50)
-	private String turma;
+	@NotBlank
+	@Size(min=5,max=150)
+	private String nome;
 	
 	@NotNull
 	private boolean ativo;
 	
-	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)//a lista de "alunos" será devolvida por chamar a "turma"
-	@JsonIgnoreProperties("turma")
-	private List<Aluno> aluno;
-
-	public List<Aluno> getAluno() {
-		return aluno;
+	@ManyToOne //são vários alunos para uma turma
+	@JsonIgnoreProperties("aluno")
+	private Turma turma;
+	
+	
+	public Turma getTurma() {
+		return turma;
 	}
 
-	public void setAluno(List<Aluno> aluno) {
-		this.aluno = aluno;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public long getId() {
@@ -48,12 +47,12 @@ public class Turma {
 		this.id = id;
 	}
 
-	public String getTurma() {
-		return turma;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTurma(String turma) {
-		this.turma = turma;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public boolean isAtivo() {
@@ -63,6 +62,5 @@ public class Turma {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	
+
 }
